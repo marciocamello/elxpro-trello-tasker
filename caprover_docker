@@ -41,4 +41,4 @@ ENV HOME=/app
 
 EXPOSE 80
 
-CMD ["bin/phoenix_sample", "start"]
+CMD ["bin/trello_tasker", "start"]
