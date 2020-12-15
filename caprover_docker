@@ -35,7 +35,7 @@ RUN chown nobody:nobody /app
 
 USER nobody:nobody
 
-COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/phoenix_sample ./
+COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/trello_tasker ./
 
 ENV HOME=/app
 
