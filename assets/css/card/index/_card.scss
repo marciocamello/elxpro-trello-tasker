@@ -38,6 +38,10 @@ a{
         p{
             font-size: 16px;
             color: $detail-color-3;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
         }
     }
 

@@ -1,56 +1,28 @@
 <section class="container">
     <h1>Monitoring your`s cards from Trello</h1>
 
-    <form action="" id="create-card">
-        <input type="text" placeholder="Insert card number" />
+    <%= f = form_for @changeset, "#", id: "create-card", phx_submit: "create" %>
+        
+        <%= text_input f, :path, placeholder: "Insert card number" %>
         <button stype="submit">Search</button>
     </form>
 
     <div class="cards">
-        <a href="/card/1">
-            <img
-                src="https://amplificadigital.com.br/wp-content/uploads/2020/05/amplifica_banner_blog_trello.jpg"
-                alt="Trello"
-                width="400"
-            />
+        <%= for card <- @cards do %>
+            <%= live_redirect to: Routes.card_info_path(@socket, :index, card.card_id) do %>
+                <img
+                    src="<%= card.thumb %>"
+                    alt="Trello"
+                    width="400"
+                />
 
-            <div>
-                <strong>Ending live view lesson</strong>
-                <p>explain concepts and show examples of how to works the live view flow</p>
-            </div>
+                <div>
+                    <strong><%= card.name %></strong>
+                    <p><%= card.description %></p>
+                </div>
 
-            <i class="fa fa-caret-right"></i>
-        </a>
-
-        <a href="/card/1">
-            <img
-                src="https://amplificadigital.com.br/wp-content/uploads/2020/05/amplifica_banner_blog_trello.jpg"
-                alt="Trello"
-                width="400"
-            />
-
-            <div>
-                <strong>Ending live view lesson</strong>
-                <p>explain concepts and show examples of how to works the live view flow</p>
-            </div>
-
-            <i class="fa fa-caret-right"></i>
-        </a>
-
-        <a href="/card/1">
-            <img
-                src="https://amplificadigital.com.br/wp-content/uploads/2020/05/amplifica_banner_blog_trello.jpg"
-                alt="Trello"
-                width="400"
-            />
-
-            <div>
-                <strong>Ending live view lesson</strong>
-                <p>explain concepts and show examples of how to works the live view flow</p>
-            </div>
-
-            <i class="fa fa-caret-right"></i>
-        </a>
-
+                <i class="fa fa-caret-right"></i>
+            <% end %>
+        <% end %>
     </div>
 </section>
