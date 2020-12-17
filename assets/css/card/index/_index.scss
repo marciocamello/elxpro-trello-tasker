@@ -14,21 +14,32 @@ form#create-card{
 
     display: flex;
     
-    input{
-        flex: 1;
-        height: 40px;
-        padding: 0 24px;
-        border-radius: 15px 0 0 15px;
-        color: $detail-color-3;
-        border: 2px solid $detail-color-2;
-        border-right: 0;
+    .form-group{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
 
-        &.error{
-            border-color: $error-color;
+        input{
+            flex: 1;
+            height: 40px;
+            padding: 0 24px;
+            border-radius: 15px 0 0 15px;
+            color: $detail-color-3;
+            border: 2px solid $detail-color-2;
+            border-right: 0;
+
+            &.error{
+                border-color: $error-color;
+            }
+
+            &::placeholder{
+                color: lighten($detail-color-3, 50);
+            }
         }
 
-        &::placeholder{
-            color: lighten($detail-color-3, 50);
+        span{
+            position: absolute;
+            margin-top: 40px;
         }
     }
 

@@ -1,10 +1,15 @@
+
+<%= render TrelloTaskerWeb.LayoutView, "header.html", route: "home" %>
+
 <section class="container">
     <h1>Monitoring your`s cards from Trello</h1>
 
     <%= f = form_for @changeset, "#", id: "create-card", phx_submit: "create" %>
-        
-        <%= text_input f, :path, placeholder: "Insert card number" %>
-        <button stype="submit">Search</button>
+        <div class="form-group">
+            <%= text_input f, :path, placeholder: "Insert card number", class: f.errors && f.errors[:path] && "error" %>
+            <%= error_tag f, :path %>
+        </div>
+        <%= submit "Search", phx_disable_with: "Searching..." %>
     </form>
 
     <div class="cards">

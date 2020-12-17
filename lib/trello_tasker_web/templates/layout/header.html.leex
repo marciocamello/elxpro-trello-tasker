@@ -1,0 +1,9 @@
+<header id="main">
+    <strong>Trello Tasker</strong>
+    <%= if assigns.route != "home" do %>
+        <%= live_redirect to: "/" do %>
+            <i class="fa fa-chevron-left"></i>
+            Back
+        <% end %>
+    <% end %>
+</header>

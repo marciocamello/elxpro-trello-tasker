@@ -32,20 +32,19 @@ defmodule TrelloTasker.Shared.Services.Trello do
     else
       body = response.body
 
-      {:ok, deliver_date, _} = body["due"] |> DateTime.from_iso8601()
+      {:ok, deliver_date, _} = body["due"] && body["due"] |> DateTime.from_iso8601() || DateTime.utc_now |> DateTime.to_iso8601() |> DateTime.from_iso8601()
 
       thumb_url =
-        body["cover"]["scaled"]
-        |> hd()
+        body["cover"]["scaled"] && body["cover"]["scaled"] |> hd() || nil
 
       %{
         name: body["name"],
         description: body["desc"],
         image: body["cover"]["sharedSourceUrl"],
-        thumb: thumb_url["url"],
+        thumb: thumb_url["url"] && thumb_url["url"] || "https://via.placeholder.com/150",
         card_id: body["shortLink"],
         completed: body["dueComplete"],
-        deliver_date: deliver_date |> DateTime.to_date(),
+        deliver_date: deliver_date |> DateTime.to_date()
       }
     end
   end
