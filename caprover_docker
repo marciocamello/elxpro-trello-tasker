@@ -7,6 +7,10 @@ RUN apk add --no-cache build-base npm git python
 # prepare build dir
 WORKDIR /app
 
+# vars
+ARG TRELLO_KEY=${TRELLO_KEY}
+ARG TRELLO_TOKEN=${TRELLO_TOKEN}
+
 # install hex + rebar
 RUN mix local.hex --force && \
     mix local.rebar --force
