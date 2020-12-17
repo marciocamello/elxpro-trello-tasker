@@ -46,7 +46,4 @@ ENV HOME=/app
 
 EXPOSE 80
 
-RUN mix ecto.create
-RUN mix ecto.migrate
-
 CMD ["bin/trello_tasker", "start"]
