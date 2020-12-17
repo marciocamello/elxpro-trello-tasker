@@ -4,7 +4,7 @@ database_url =
   System.get_env("DATABASE_URL") ||
     raise """
     environment variable DATABASE_URL is missing.
-    For example: ecto://USER:PASS@HOST/DATABASE
+    For example: ecto://postgres:postgres@srv-captain--postgresql-db/trello_tasker_dev
     """
 
 config :trello_tasker, TrelloTasker.Repo,
