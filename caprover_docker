@@ -28,6 +28,8 @@ RUN npm --prefix ./assets ci --progress=false --no-audit
 RUN npm run --prefix ./assets/ deploy
 RUN mix phx.digest
 RUN mix do compile, release
+RUN mix ecto.setup
+RUN mix ecto.migrate
 
 # prepare release image
 FROM alpine:3.12 AS app
