@@ -12,7 +12,7 @@ defmodule TrelloTasker.Shared.Services.CreateCard do
       {:error, msg} ->
         {:trello_error, msg}
 
-      card_info ->
+      _card_info ->
         card
         |> Cards.create_card()
         |> return_call()
